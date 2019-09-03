@@ -1,26 +1,56 @@
-import React from "react";
+import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    notes: [
+      "Note#1",
+      "Note#2",
+      "Note#3"
+    ],
+    value: ""
+  }
+
+  componentsDidMount() {
+    this.noteInput.focus()
+  }
+
+  addNote = (e) => {
+    if (e.keyCode === 13) {
+      this.setState(
+        {
+          notes: [...this.state.notes, e.target.value],
+          value: ""
+        }
+      )
+
+    }
+  }
+
+  changeValue = (e) => {
+    this.setState({ value: e.target.value })
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {
+            this.state.notes.map(
+              (note, index) => <li key={index}>{note}</li>
+            )
+          }
+        </ul>
+        <input type="text"
+          value={this.state.value}
+          onChange={this.changeValue}
+          onKeyUp={this.addNote}
+          ref={input => this.noteInput = input} />
+      </div>
+    );
+  }
 }
 
 export default App;
