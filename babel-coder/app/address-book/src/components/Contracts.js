@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Contracts = (props) => (
     <ul>
@@ -11,5 +11,6 @@ const Contracts = (props) => (
         }
     </ul>
 )
+
 
 export default Contracts
