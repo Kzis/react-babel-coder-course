@@ -4,14 +4,27 @@ import PropTypes from 'prop-types';
 export default class Tabs extends Component {
 
     static childContextTypes = {
-        selectedIndex: PropTypes.number.isRequired
+        selectedIndex: PropTypes.number.isRequired,
+        onTabChange: PropTypes.func.isRequired
     }
 
     getChildContext = () => {
         return {
-            selectedIndex: this.props.selectedIndex
+            selectedIndex: this.state.selectedIndex,
+            onTabChange: this.onTabChange
         }
     }
+
+    state = {
+        selectedIndex: this.props.selectedIndex
+    }
+
+    onTabChange = (index) => {
+        this.setState({
+            selectedIndex: index
+        })
+    }
+
 
     render() {
         return (
