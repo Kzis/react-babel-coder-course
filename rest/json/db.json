@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Introduction To Javascript",
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "title": "Introduction To Python",
+      "authorId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "User1"
+    },
+    {
+      "id": 2,
+      "name": "User2"
+    }
+  ],
+  "comments": {
+    "id": 1,
+    "articleId": 1,
+    "message": "Hello world"
+  }
+}
