@@ -13,7 +13,7 @@ const Model = {
     create(attrs) {
         const collection = this.collection()
         const record = this.withPermittedAttrs(attrs, { id: collection.length + 1 })
-
+        console.log(record)
         this.setCollection([...collection, record]) //update val to db
         return record
     },
@@ -54,7 +54,7 @@ const Model = {
     },
 
     withPermittedAttrs(attrs, init = {}) {
-        this.permittedAttrs.reduce(
+        return this.permittedAttrs.reduce(
             (record, attr) => attrs[attr] ? { ...record, [attr]: attrs[attr] } : record
             , init)
     },

@@ -14,7 +14,9 @@ const UsersController = {
     },
 
     create(req, res) {
-        const user = Users.create({ email: req.body.email })
+        const user = Users.create({
+            email: req.body.email
+        })
         res.json({
             users: user
         })
