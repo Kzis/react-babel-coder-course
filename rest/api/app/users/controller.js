@@ -1,15 +1,16 @@
 import Users from './model'
+import UsersSerializers from './serializers'
 
 const UsersController = {
     getAll(req, res) {
         res.json({
-            users: Users.findAll()
+            users: UsersSerializers.for('getAll', Users.findAll())
         })
     },
 
     get(req, res) {
         res.json({
-            users: Users.find(req.params.id)
+            users: UsersSerializers.for('get', Users.find(req.params.id))
         })
     },
 
@@ -18,7 +19,7 @@ const UsersController = {
             email: req.body.email
         })
         res.json({
-            users: user
+            users: UsersSerializers.for('create', user)
         })
     }
 
