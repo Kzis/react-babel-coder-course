@@ -15,12 +15,16 @@ const UsersController = {
     },
 
     create(req, res) {
-        const user = Users.create({
-            email: req.body.email
-        })
-        res.json({
-            users: UsersSerializers.for('create', user)
-        })
+        const { email, password } = req.body
+
+        Users.create(email, password).then(
+            // user => res.status(201).json({
+            //     users: UsersSerializers.for('create', user)
+            // })
+            user => res.status(201).json({
+                user
+            })
+        )
     }
 
 }
