@@ -5,7 +5,7 @@ const Articles = {
 
     ...Model,
     key: 'articles',
-    permittedAttrs: ['title', 'authorId'],
+    permittedAttrs: ['title', 'content', 'authorId', 'categoryId'],
 
 }
 
