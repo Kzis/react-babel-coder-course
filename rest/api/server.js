@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 import config from './config';
 import auth from './middleware/auth'
+import cors from 'cors'
 
 function setupRoutes(app) {
     const APP_DIR = `${__dirname}/app`
@@ -26,7 +27,8 @@ export function setup() {
 
     app.use(auth)
     app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json());
+    app.use(bodyParser.json())
+    app.use(cors())
 
     setupRoutes(app)
 
