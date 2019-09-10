@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import config from './config';
+import auth from './middleware/auth'
 
 function setupRoutes(app) {
     const APP_DIR = `${__dirname}/app`
@@ -23,6 +24,7 @@ export function setup() {
     const app = express();
     const PORT = config.port;
 
+    app.use(auth)
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json());
 
